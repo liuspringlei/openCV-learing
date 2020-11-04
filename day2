@@ -1,0 +1,25 @@
+import cv2.cv2 as cv
+import os 
+def img_add (img1,img2):
+    return cv.add(img1,img2)
+def img_subtract (img1,img2):
+    return cv.subtract(img1,img2)
+img1 = cv.imread(r"C:\Users\lcl\Desktop\file\fanay\img1.jpg",0)
+img2 = cv.imread(r"C:\Users\lcl\Desktop\file\fanay\img2.jpg",0)
+img1 = cv.resize(img1,(img2.shape[1],img2.shape[0]))
+print(img1.shape)
+print(img2.shape)
+sum1 = img1*img2 #图像的相乘是矩阵对应的元素相乘，无论什么运算都保持图像大小相同
+sum2 = img1+img2    
+sum3 = img_add(img1,img2)
+"""
+加号运算符和add函数的区别在于，如果对应的像素值超过255，对应的像素上的值是a+b%256
+而，add函数则是会取255最大值
+"""
+print(sum2)
+print(sum3)
+cv.imshow("1",sum1)
+cv.imshow("2",sum2)
+cv.imshow("3",sum3)
+cv.waitKey(0)
+cv.destroyAllWindows()
