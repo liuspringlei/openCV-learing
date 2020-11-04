@@ -1,0 +1,19 @@
+import os 
+import cv2.cv2 as cv
+f1 = cv.imread(r"C:\Users\lcl\Desktop\file\fanay\fay.jpg",1) #1是原图，0是灰度化读取，-1是阿尔法通道
+"""
+在使用路径时有几种方法应该去注意并且了解，
+1，在路径前面加字母r，用来让转义字符失去意义
+2，打两个反斜杠\\
+3，使用linux中的路径反斜杠符号//
+"""
+print(f1) #print the array of picture
+print(f1.shape) #print the weight and long in picture
+print(f1.size)  #print the all pixel of the picture
+print(f1.dtype) #print the data type of the picture array 
+f1 = cv.resize(f1,(int(f1.shape[1]),int(f1.shape[0]))) #在使用resize函数的过程中，要记得后面的参数是 长，宽。和shape函数刚好相反
+cv.imwrite(r"D:\f1.jpg",f1)
+f1_gray = cv.cvtColor(f1,cv.COLOR_BGR2GRAY) #灰度处理图像
+cv.imshow("f1",f1)
+cv.waitKey(0)
+cv.destroyAllWindows()
